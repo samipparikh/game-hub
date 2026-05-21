@@ -1,0 +1,42 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); min-height: 100vh; color: #fff; }
+#app { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+
+.title-container { text-align: center; padding: 40px 0 50px; }
+.title-container h1 { font-size: 4.5rem; font-weight: 900; letter-spacing: -2px; text-shadow: 0 4px 20px rgba(255, 107, 107, 0.3); }
+.title-container .accent { color: #ff6b6b; }
+.subtitle { color: #a0a0b0; font-size: 1.2rem; margin-top: 8px; }
+
+.games-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 50px; }
+
+.game-card { display: block; padding: 30px 24px; border-radius: 16px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); text-decoration: none; color: #fff; transition: all 0.3s; position: relative; overflow: hidden; }
+.game-card:hover { transform: translateY(-4px); border-color: rgba(255, 107, 107, 0.4); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3); background: rgba(255, 255, 255, 0.07); }
+
+.game-icon { font-size: 3.5rem; margin-bottom: 16px; }
+.game-info h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; letter-spacing: 1px; }
+.game-info p { color: #a0a0b0; font-size: 0.95rem; line-height: 1.4; }
+
+.game-sessions { position: absolute; top: 16px; right: 16px; }
+.session-badge { background: linear-gradient(135deg, #4ecdc4, #44bd9e); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; animation: pulse 2s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+
+.active-section { margin-top: 10px; }
+.active-title { text-align: center; color: #4ecdc4; font-size: 1.2rem; margin-bottom: 16px; font-weight: 700; }
+
+.all-active-games { max-width: 600px; margin: 0 auto; }
+.no-games { text-align: center; color: #a0a0b0; font-size: 0.95rem; font-style: italic; padding: 20px; }
+
+.active-game-row { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-radius: 12px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 10px; text-decoration: none; color: #fff; transition: all 0.2s; }
+.active-game-row:hover { border-color: #4ecdc4; background: rgba(78, 205, 196, 0.08); }
+
+.active-game-icon { font-size: 1.8rem; }
+.active-game-details { flex: 1; }
+.active-game-name { display: block; font-weight: 700; font-size: 0.95rem; }
+.active-game-meta { display: block; font-size: 0.8rem; color: #a0a0b0; margin-top: 2px; }
+.active-game-players { font-weight: 700; color: #4ecdc4; font-size: 0.9rem; background: rgba(78, 205, 196, 0.1); padding: 4px 10px; border-radius: 8px; }
+
+@media (max-width: 600px) {
+    .title-container h1 { font-size: 3rem; }
+    .games-grid { grid-template-columns: 1fr; }
+    .game-card { padding: 24px 20px; }
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="title-container">
+            <h1>GAME<span class="accent">HUB</span></h1>
+            <p class="subtitle">Pick a game. Play with friends.</p>
+        </div>
+
+        <div class="games-grid">
+            <a href="https://samipparikh.github.io/flip7/" class="game-card" id="card-flip7">
+                <div class="game-icon">🎴</div>
+                <div class="game-info">
+                    <h2>FLIP 7</h2>
+                    <p>Press your luck card game. Draw cards without busting!</p>
+                </div>
+                <div class="game-sessions" id="sessions-flip7"></div>
+            </a>
+
+            <a href="https://samipparikh.github.io/liars-dice/" class="game-card" id="card-liars-dice">
+                <div class="game-icon">🎲</div>
+                <div class="game-info">
+                    <h2>LIAR'S DICE</h2>
+                    <p>Bluff and bid. Call the liar or lose your dice!</p>
+                </div>
+                <div class="game-sessions" id="sessions-liars-dice"></div>
+            </a>
+
+            <a href="https://samipparikh.github.io/booray/" class="game-card" id="card-booray">
+                <div class="game-icon">🃏</div>
+                <div class="game-info">
+                    <h2>BOORAY</h2>
+                    <p>Trick-taking card game. Win the pot or get booray'd!</p>
+                </div>
+                <div class="game-sessions" id="sessions-booray"></div>
+            </a>
+        </div>
+
+        <div class="active-section">
+            <h3 class="active-title">Live Sessions</h3>
+            <div id="all-active-games" class="all-active-games">
+                <p class="no-games">Checking for active games...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script>
+        firebase.initializeApp({
+            apiKey: "AIzaSyAa7-2TnMXUlaiQwuO3nsNlgj38Ejdp6WU",
+            authDomain: "flip7-35782.firebaseapp.com",
+            databaseURL: "https://flip7-35782-default-rtdb.firebaseio.com",
+            projectId: "flip7-35782",
+            storageBucket: "flip7-35782.firebasestorage.app",
+            messagingSenderId: "424240528171",
+            appId: "1:424240528171:web:08e11beb043c8ca0c0236e",
+            measurementId: "G-YNVD6GK1P9"
+        });
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
