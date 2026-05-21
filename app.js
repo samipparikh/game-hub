@@ -1,3 +1,4 @@
+const PASSWORD = 'TipsyPutt';
 const db = firebase.database();
 
 const GAMES = [
@@ -5,6 +6,37 @@ const GAMES = [
     { id: 'liars-dice', name: "LIAR'S DICE", icon: '🎲', path: 'liars-dice-rooms', url: 'https://samipparikh.github.io/liars-dice/' },
     { id: 'booray', name: 'BOORAY', icon: '🃏', path: 'booray-rooms', url: 'https://samipparikh.github.io/booray/' },
 ];
+
+function checkAuth() {
+    if (sessionStorage.getItem('game_hub_auth') === 'true') {
+        showHub();
+        return;
+    }
+
+    document.getElementById('login-screen').style.display = 'block';
+
+    document.getElementById('btn-login').addEventListener('click', attemptLogin);
+    document.getElementById('password-input').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') attemptLogin();
+    });
+}
+
+function attemptLogin() {
+    const input = document.getElementById('password-input').value;
+    if (input === PASSWORD) {
+        sessionStorage.setItem('game_hub_auth', 'true');
+        showHub();
+    } else {
+        document.getElementById('login-error').textContent = 'Incorrect password';
+        document.getElementById('password-input').value = '';
+    }
+}
+
+function showHub() {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    listenForSessions();
+}
 
 function listenForSessions() {
     GAMES.forEach(game => {
@@ -49,16 +81,19 @@ function renderAllActiveSessions() {
         }
 
         container.innerHTML = allSessions.map(s => `
-            <a href="${s.game.url}" class="active-game-row">
+            <a href="${s.game.url}#join=${s.code}" class="active-game-row">
                 <span class="active-game-icon">${s.game.icon}</span>
                 <div class="active-game-details">
                     <span class="active-game-name">${s.game.name}</span>
-                    <span class="active-game-meta">Room ${s.code} — Host: ${s.hostName}</span>
+                    <span class="active-game-meta">Host: ${s.hostName}</span>
                 </div>
-                <span class="active-game-players">${s.playerCount}/6</span>
+                <div class="active-game-right">
+                    <span class="active-game-players">${s.playerCount}/6</span>
+                    <span class="join-btn">JOIN</span>
+                </div>
             </a>
         `).join('');
     });
 }
 
-listenForSessions();
+checkAuth();
