@@ -1,4 +1,3 @@
-const PASSWORD = 'tipsy';
 const db = firebase.database();
 
 const GAMES = [
@@ -6,37 +5,6 @@ const GAMES = [
     { id: 'liars-dice', name: "LIAR'S DICE", icon: '🎲', path: 'liars-dice-rooms', url: 'https://samipparikh.github.io/liars-dice/' },
     { id: 'booray', name: 'BOORAY', icon: '🃏', path: 'booray-rooms', url: 'https://samipparikh.github.io/booray/' },
 ];
-
-function checkAuth() {
-    if (sessionStorage.getItem('game_hub_auth') === 'true') {
-        showHub();
-        return;
-    }
-
-    document.getElementById('login-screen').style.display = 'block';
-
-    document.getElementById('btn-login').addEventListener('click', attemptLogin);
-    document.getElementById('password-input').addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') attemptLogin();
-    });
-}
-
-function attemptLogin() {
-    const input = document.getElementById('password-input').value;
-    if (input === PASSWORD) {
-        sessionStorage.setItem('game_hub_auth', 'true');
-        showHub();
-    } else {
-        document.getElementById('login-error').textContent = 'Incorrect password';
-        document.getElementById('password-input').value = '';
-    }
-}
-
-function showHub() {
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('app').style.display = 'block';
-    listenForSessions();
-}
 
 function listenForSessions() {
     GAMES.forEach(game => {
@@ -96,4 +64,4 @@ function renderAllActiveSessions() {
     });
 }
 
-checkAuth();
+listenForSessions();
