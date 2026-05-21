@@ -1,4 +1,4 @@
-const PASSWORD = 'TipsyPutt';
+const PASSWORD = 'tipsy';
 const db = firebase.database();
 
 const GAMES = [
